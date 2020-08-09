@@ -3,14 +3,16 @@ import MapView from 'react-native-maps';
 import Constants from 'expo-constants';
 import Lightbox from 'react-native-lightbox';
 import {styleMap as styles} from "./Styles/styleMap";
-import { View,
+import {
+    View,
     Modal,
     Text,
     Image,
-    TouchableOpacity } from 'react-native';
+    TouchableOpacity
+}
+from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
-import ModalCustom from "./Styles/ModalCustom";
 
 export default function Map({latitude, longitude}) {
     const [maker, setMaker] = useState({});
@@ -78,7 +80,7 @@ export default function Map({latitude, longitude}) {
                     latitudeDelta: 0.0922,
                     longitudeDelta: 0.0421
                 }}
-                onLongPress={e => handleLongPress(e)}>
+                onLongPress={handle => handleLongPress(handle)}>
                 {
                     (marker.length > 0) && marker.map((item, index) => (
                         <MapView.Marker
@@ -115,15 +117,15 @@ export default function Map({latitude, longitude}) {
             >
                 <View style={styles.modal}>
                 <TouchableOpacity style={styles.button}
-                                  onPress={pickImage}
-                >
+                                  onPress={pickImage}>
                     <Text>
                         Choose Image
                     </Text>
                 </TouchableOpacity>
                 {image !== null && <Image source={{ uri: image }} style={styles.imgModal} />}
                 <TouchableOpacity style={styles.button}
-                                  onPress={() => addMarker({ maker, image })}>
+                                  onPress={() => addMarker({ maker, image })}
+                >
                     <Text>Add</Text>
                 </TouchableOpacity>
                     <TouchableOpacity style={styles.button}
@@ -132,11 +134,6 @@ export default function Map({latitude, longitude}) {
                     </TouchableOpacity>
                 </View>
             </Modal>
-            {/*<ModalCustom pickImage={pickImage}*/}
-            {/*             image={image}*/}
-            {/*             addMarker={() => addMarker({ maker, image })}*/}
-            {/*             // addMarker={() => console.warn('123')}*/}
-            {/*/>*/}
         </View>
     )
 }

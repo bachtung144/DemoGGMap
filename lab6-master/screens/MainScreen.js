@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import * as Location from 'expo-location';
 import Map from '../components/Map';
-import { View,
+import {
+    View,
     ActivityIndicator,
-    StyleSheet } from 'react-native';
+    StyleSheet
+}
+from 'react-native';
 
 
 export default function MainScreen() {
